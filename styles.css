@@ -1,0 +1,81 @@
+body {
+    background-color: #001f3f;
+    color: white;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden; /* Prevent scrollbars due to animations */
+}
+
+.container {
+    position: relative;
+    padding: 50px;
+}
+
+.glow {
+    font-size: 4em;
+    color: #FFD700; /* Gold color */
+    animation: glow-animation 1.5s infinite alternate;
+}
+
+@keyframes glow-animation {
+    0% {
+        text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FF4500;
+        transform: scale(1);
+    }
+    100% {
+        text-shadow: 0 0 20px #FFD700, 0 0 30px #FF4500, 0 0 40px #FF6347;
+        transform: scale(1.05);
+    }
+}
+
+.name {
+    font-size: 2.5em;
+    margin-top: 20px;
+    opacity: 0; /* Start invisible */
+    animation: fadeInBloom 3s ease-in-out forwards; /* Fade in effect */
+}
+
+@keyframes fadeInBloom {
+    from { opacity: 0; transform: scale(1); }
+    to { opacity: 1; transform: scale(1.05); }
+}
+
+.fireworks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('fireworks.gif'); /* Add your fireworks GIF */
+    background-size: cover;
+}
+
+#countdown {
+    font-size: 2em;
+}
+
+/* Advanced Effects */
+.container:hover .glow {
+    animation-duration: 2s; /* Slower glow on hover */
+}
+
+.container:hover .name {
+    color: #FF6347; /* Change color on hover */
+    text-shadow: 2px 2px #FFD700; /* Add shadow on hover */
+}
+
+/* Background gradient effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+}
+
+/* Backdrop filter for a dreamy look */
+.container {
+    backdrop-filter: blur(10px); /* Blur effect for the container */
+}
