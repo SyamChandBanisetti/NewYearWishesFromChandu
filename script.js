@@ -4,13 +4,16 @@ const countdownFunction = setInterval(() => {
     const now = new Date().getTime();
     const distance = countdownDate - now;
 
+    // Calculate days, hours, minutes, and seconds
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById("countdown").innerHTML = ${days}d ${hours}h ${minutes}m ${seconds}s;
+    // Display the result in the element with id="countdown"
+    document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
+    // If the countdown is finished
     if (distance < 0) {
         clearInterval(countdownFunction);
         document.getElementById("countdown").innerHTML = "Happy New Year!";
@@ -22,5 +25,5 @@ const countdownFunction = setInterval(() => {
         document.querySelector('.name').style.opacity = '1'; // Make it visible
         document.querySelector('.name').style.animation = 'none'; // Stop fading effect
         document.querySelector('.name').style.transition = 'color .5s ease'; // Smooth transition for color change
-   }
+    }
 }, 1000);
